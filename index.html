@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="game">
+        <img id="player1" src="img/rockL.svg" alt="">
+        <img id="player2" src="img/rockR.svg" alt="">
+    </div>
+
+
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+
+        setInterval(() => {
+            // Run anim
+            document.getElementById('player2').classList.remove('player2_loose');
+            document.getElementById('player2').classList.remove('player2_win');
+            document.getElementById('player1').classList.remove('player1_loose');
+            document.getElementById('player1').classList.remove('player1_win');
+
+
+            document.getElementById('player1').classList.remove('player1_anim');
+            setTimeout(() => {
+                document.getElementById('player1').classList.add('player1_anim');
+            }, 100)
+            document.getElementById('player2').classList.remove('player2_anim');
+            setTimeout(() => {
+                document.getElementById('player2').classList.add('player2_anim');
+            }, 100)
+
+            // Get random value
+            player1_ch = getRandomInt(3);
+            player2_ch = getRandomInt(3);
+
+            // Show random value
+            setTimeout(() => {
+                if (player1_ch == 0) {
+                    document.getElementById('player1').src = 'img/rockL.svg'
+                }
+                if (player1_ch == 1) {
+                    document.getElementById('player1').src = 'img/SCL.svg'
+                }
+                if (player1_ch == 2) {
+                    document.getElementById('player1').src = 'img/paperL.svg'
+                }
+
+                if (player2_ch == 0) {
+                    document.getElementById('player2').src = 'img/rockR.svg'
+                }
+                if (player2_ch == 1) {
+                    document.getElementById('player2').src = 'img/SCR.svg'
+                }
+                if (player2_ch == 2) {
+                    document.getElementById('player2').src = 'img/paperR.svg'
+                }
+            }, 1500)
+
+            setTimeout(() => {
+                if (player1_ch == player2_ch - 1 || player1_ch == 2 && player2_ch == 0) {
+                    console.log('win 1 (left)')
+                    document.getElementById('player1').classList.add('player1_win');
+                    document.getElementById('player2').classList.add('player2_loose');
+                } else if (player1_ch == player2_ch) {
+                    console.log('win ALL')
+                    document.getElementById('player1').classList.add('player1_win');
+                    document.getElementById('player2').classList.add('player2_win');
+                } else {
+                    document.getElementById('player1').classList.add('player1_loose');
+                    document.getElementById('player2').classList.add('player2_win');
+                    console.log('win 2 (right)')
+                }
+            }, 2500)
+
+
+
+            setTimeout(() => {
+                document.getElementById('player1').src = 'img/rockL.svg'
+            }, 3500)
+            setTimeout(() => {
+                document.getElementById('player2').src = 'img/rockR.svg'
+            }, 3500)
+
+
+        }, 5000);
+    </script>
+</body>
+
+</html>

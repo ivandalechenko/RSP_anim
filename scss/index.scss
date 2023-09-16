@@ -1,0 +1,112 @@
+@import 'null';
+body{
+    background: black;
+}
+
+.game{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#player1{
+    transform: rotate(5deg);
+    transform-origin: left;
+    width: 50%;
+} 
+.player1_anim{
+    animation: player1_anim .5s 3;
+}
+#player2{
+    width: 50%;
+    transform: rotate(-5deg);
+    transform-origin: right;
+} 
+.player2_anim{
+    animation: player2_anim .5s 3;
+}
+.player2_win{
+    animation: player2_win 1.2s;
+}
+.player2_loose{
+    animation: player2_loose 1.2s;
+}
+.player1_win{
+    animation: player1_win 1.2s;
+}
+.player1_loose{
+    animation: player1_loose 1.2s;
+}
+
+@keyframes player2_win {
+    0%{
+        transform: rotate(-5deg);
+    }
+    70%{
+        transform: rotate(20deg) scale(1.1);
+    }
+    100%{
+        transform: rotate(-5deg);
+    }
+}
+@keyframes player2_loose {
+    0%{
+        transform: rotate(-5deg);
+    }
+    70%{
+        transform: rotate(-20deg) scale(0.9);
+    }
+    100%{
+        transform: rotate(-5deg);
+    }
+}
+
+@keyframes player1_win {
+    0%{
+        transform: rotate(5deg);
+    }
+    70%{
+        transform: rotate(-20deg) scale(1.1);
+    }
+    100%{
+        transform: rotate(5deg);
+    }
+}
+@keyframes player1_loose {
+    0%{
+        transform: rotate(5deg);
+    }
+    70%{
+        transform: rotate(20deg) scale(0.9);
+    }
+    100%{
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes player1_anim {
+    0%{
+        transform: rotate(5deg);
+    }
+    70%{
+        transform: rotate(-20deg);
+    }
+    100%{
+        transform: rotate(5deg);
+    }
+}
+@keyframes player2_anim {
+    0%{
+        transform: rotate(-5deg);
+    }
+    70%{
+        transform: rotate(20deg);
+    }
+    100%{
+        transform: rotate(-5deg);
+    }
+}
